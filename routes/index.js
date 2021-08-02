@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Recipe = require("../models/recipe");
+const mongoose = require("mongoose");
 
 
 /* GET home page. */
@@ -15,6 +16,15 @@ router.get('/recipe', async function(req, res, next) {
     });
 });
 
+router.get("/oneRecipe/:id", (req, res) => {
+    Recipe.findById(req.params.id)
+        .then((dbRes) => {
+            res.render("oneRecipe.hbs", { recipe: dbRes });
+        })
+        .catch((error) => {
+            console.log(error)
+        });
 
+});
 
 module.exports = router;

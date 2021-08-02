@@ -2,14 +2,16 @@
 body {
     padding: 50px;
     font: 14px;
+    background: url('/images/bg.webp') no-repeat center center fixed;
+    background-size: cover;
 }
 
 a {
-    color: #00B7FF;
+    color: unset;
+    text-decoration: none;
 }
 
 .one-recipe {
-    max-width: 400px;
     margin: 5px;
     padding: 5px;
     border: 1px solid gray;
@@ -55,6 +57,7 @@ table {
     display: flex;
     flex-direction: row;
     padding: 10px;
+    justify-content: space-between;
 }
 
 .header p {
@@ -82,7 +85,7 @@ table {
 .border1 {
     border: rgb(187, 175, 175) 2px solid;
     border-radius: 10px;
-    background-color: lavender;
+    background-color: #c1dbe78c;
     padding: 5px;
 }
 
@@ -94,9 +97,10 @@ table {
 }
 
 .recipes-container>div {
-    width: 350px;
+    width: 450px;
     border-radius: 10px;
     border: 1px solid black;
+    background-color: rgba(255, 255, 255, 0.6);
 }
 
 .head {

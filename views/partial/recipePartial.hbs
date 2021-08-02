@@ -2,7 +2,10 @@
       <section class="border1">
         <div class="header">
           <div>
-            <h4>{{this.name}} (<small>{{this.difficultie}}</small>)</h4>
+            <h4>
+              <a href="/oneRecipe/{{this._id}}">{{this.name}}</a>
+              
+               (<small>{{this.difficultie}}</small>)</h4>
             <p>Rated xx</p>
           </div>
           <img class="recipe-image" src="{{this.image}}">

@@ -1,0 +1,13 @@
+{{>recipePartial recipe}}
+
+<div class="one-recipe">
+    <div class="border1">
+        <h1>Ingridients</h1>
+
+        <ol>
+            {{#each recipe.ingridients}}
+            <li>{{this}}</li>
+            {{/each}}
+        </ol>
+    </div>
+</div>
