@@ -1,20 +1,20 @@
  require("dotenv").config({ path: __dirname + '/./../.env' });
- const recipeModel = require("./../models/recipe");
  const mongoose = require("mongoose");
+ const recipeModel = require("./../models/recipe");
 
  const recipes = [{
          name: "Roast chicken & roots",
-         category: "main dish",
-         prep: "30 mins",
-         cook: "1 hr and 15 mins",
+         category: "Main dish",
+         prep: 30,
+         cook: 75,
          difficultie: "more effort",
          nutrition: {
-             kcal: "524 kcal",
-             carbs: "28g",
-             fibre: "11g",
-             protein: "42g",
-             sugars: "17g",
-             salts: "0.5g",
+             kcal: 524,
+             carbs: 28,
+             fibre: 11,
+             protein: 42,
+             sugars: 17,
+             salts: 0.5,
          },
          ingridients: ["1.6kg whole chicken",
              "zest and juice 1 lemon",
@@ -31,17 +31,17 @@
      },
      {
          name: "Quinoa tabbouleh",
-         category: "main dish",
-         prep: "20 mins",
-         cook: "20 mins",
+         category: "Main dish",
+         prep: 20,
+         cook: 20,
          difficultie: "Easy",
          nutrition: {
-             kcal: "284 kcal",
-             carbs: "38g",
-             fibre: "5g",
-             protein: "10g",
-             sugars: "14g",
-             salts: "0.4g",
+             kcal: 284,
+             carbs: 38,
+             fibre: 5,
+             protein: 10,
+             sugars: 14,
+             salts: 0.4,
 
          },
          ingridients: ["100g dried quinoa",
@@ -64,17 +64,17 @@
      },
      {
          name: "Barbecued meatball kebabs",
-         category: "main dish",
-         prep: "30 mins",
-         cook: "10 mins",
+         category: "Main dish",
+         prep: 30,
+         cook: 10,
          difficultie: "Easy",
          nutrition: {
-             kcal: "351 kcal",
-             carbs: "8g",
-             fibre: "5g",
-             protein: "25g",
-             sugars: "7g",
-             salts: "0.3g",
+             kcal: 351,
+             carbs: 8,
+             fibre: 5,
+             protein: 25,
+             sugars: 7,
+             salts: 0.3,
 
          },
          ingridients: ["¼ red onion",
@@ -100,16 +100,16 @@
      {
          name: "Ginger cookie sandwiches with lemon mascarpone",
          category: "Dessert",
-         prep: "30 mins",
-         cook: "14 mins",
+         prep: 30,
+         cook: 14,
          difficultie: "Easy",
          nutrition: {
-             kcal: "227 kcal",
-             carbs: "28g",
-             fibre: "0g",
-             protein: "2g",
-             sugars: "18g",
-             salts: "0.1g",
+             kcal: 227,
+             carbs: 28,
+             fibre: 0,
+             protein: 2,
+             sugars: 18,
+             salts: 0.1,
 
          },
          ingridients: ["100g unsalted butter,melted",
@@ -137,16 +137,16 @@
      {
          name: "Vanilla lemongrass crème brûlée",
          category: "Dessert",
-         prep: "25 mins",
-         cook: "1 hr and 20 mins plus 6 hrs infusing and 3 hrs chilling ",
-         difficultie: "More efforts",
+         prep: 25,
+         cook: 60,
+         difficultie: "more effort",
          nutrition: {
-             kcal: "514 kcal",
-             carbs: "35g",
-             fibre: "0g",
-             protein: "5g",
-             sugars: "32g",
-             salts: "0.1g",
+             kcal: 514,
+             carbs: 35,
+             fibre: 0,
+             protein: 5,
+             sugars: 32,
+             salts: 0.1,
 
          },
          ingridients: ["500ml whipping cream",
@@ -161,16 +161,16 @@
      {
          name: "Coconut cupcakes",
          category: "Dessert",
-         prep: "30 mins",
-         cook: "20 mins",
+         prep: 30,
+         cook: 20,
          difficultie: "Easy",
          nutrition: {
-             kcal: "388 kcal",
-             carbs: "45g",
-             fibre: "1g",
-             protein: "3g",
-             sugars: "31g",
-             salts: "0.1g",
+             kcal: 388,
+             carbs: 45,
+             fibre: 1,
+             protein: 3,
+             sugars: 31,
+             salts: 0.1,
 
          },
          ingridients: ["For the coconut whipped cream",
@@ -193,15 +193,15 @@
      {
          name: "Breakfast super-shake",
          category: "Beverage",
-         prep: "5 mins",
+         prep: 5,
          difficultie: "Easy",
          nutrition: {
-             kcal: "391 kcal",
-             carbs: "50g",
-             fibre: "10g",
-             protein: "15g",
-             sugars: "44g",
-             salts: "0.4g",
+             kcal: 391,
+             carbs: 50,
+             fibre: 10,
+             protein: 15,
+             sugars: 44,
+             salts: 0.4,
 
          },
          ingridients: ["100ml full-fat milk",
@@ -222,15 +222,15 @@
      {
          name: "Two-minute breakfast smoothie",
          category: "Beverage",
-         prep: "2 mins",
+         prep: 2,
          difficultie: "Easy",
          nutrition: {
-             kcal: "156 kcal",
-             carbs: "25g",
-             fibre: "2g",
-             protein: "4g",
-             sugars: "19g",
-             salts: "0.1g",
+             kcal: 156,
+             carbs: 25,
+             fibre: 2,
+             protein: 4,
+             sugars: 19,
+             salts: 0.1,
 
          },
          ingridients: ["1 banana",
@@ -246,15 +246,15 @@
      {
          name: "Peach Melba smoothie",
          category: "Beverage",
-         prep: "5 mins",
+         prep: 5,
          difficultie: "Easy",
          nutrition: {
-             kcal: "161 kcal",
-             carbs: "30g",
-             fibre: "3g",
-             protein: "4g",
-             sugars: "27g",
-             salts: "0.1g",
+             kcal: 161,
+             carbs: 30,
+             fibre: 3,
+             protein: 4,
+             sugars: 27,
+             salts: 0.1,
 
          },
          ingridients: ["410g can peach halves",
@@ -273,9 +273,14 @@
          return recipeModel.deleteMany();
      })
      .then(() => {
+
          recipeModel.create(recipes)
              .then((createdRecipes) => {
                  console.log(`seed recipes done : ${createdRecipes.length} documents inserted !`);
+
+                 recipeModel.findOne()
+                     .populate('nutrition')
+                     .then((recipe) => { console.log(recipe); })
              })
              .catch((error) => {
                  console.log(error);
