@@ -1,0 +1,29 @@
+{{!-- /views/signupForm.hbs --}}
+<div class="signup-shape">
+    <form method="POST" action="/signup">
+        <div>
+            <h2>Create account !</h2>
+
+            <div>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" />
+            </div>
+
+            <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" />
+            </div>    
+
+            <div>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" />
+            </div>
+
+            <button type="submit">Create account</button>
+        </div>
+        <div>
+            <a href="/signin" >Already registered, Sign-In</a>
+        </div>
+        
+    </form>
+</div>    

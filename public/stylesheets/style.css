@@ -1,8 +1,156 @@
+/* public/stylesheets/style.css */
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "Nunito", sans-serif;
 }
 
 a {
-  color: #00B7FF;
+  color: #111111;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:over {
+  text-decoration: white;
+}
+
+.nav-register {
+  font-size: 14px;
+  font-weight: bold;
+  /* margin-top: -20px; */
+}
+
+.signup-link:over {
+  text-decoration: blue;
+}
+
+nav {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #00b7ff;
+  height: 5.5em;
+  border-radius: 4px;
+}
+
+footer {
+  text-align: center;
+  font-size: 12px;
+}
+
+form {
+  margin: 30px auto;
+  width: 250px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form label {
+  color: #666;
+  display: inline-block;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+.register,
+.create-account {
+  box-sizing: border-box;
+  font-size: 14px;
+  outline: 0;
+  width: 250px;
+  background: #43a3e6;
+  border: 1px solid #43a3e6;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  padding: 8px 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.4s ease background;
+  text-align: center;
+}
+
+.register:hover,
+.create-account:hover {
+  background: #fff;
+  color: #43a3e6;
+  transition: 0.3s ease background;
+}
+
+.register-btn {
+  text-align: left;
+}
+
+.create-btn {
+  text-align: right;
+  margin-top: -34px;
+}
+
+.home-btn {
+  border: 1px solid #e6e7e8;
+  border-radius: 4px;
+  width: 500px;
+  text-align: center;
+  margin: auto;
+}
+
+.signin-shape {
+  border: 1px solid #e6e7e8;
+  border-radius: 4px;
+  width: 300px;
+  text-align: center;
+  margin: 30px auto;
+}
+
+.signup-shape {
+  border: 1px solid #e6e7e8;
+  border-radius: 4px;
+  width: 300px;
+  text-align: center;
+  margin: 30px auto;
+}
+
+form input,
+form button {
+  box-sizing: border-box;
+  font-size: 14px;
+  outline: 0;
+  padding: 4px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+form button {
+  background: #43a3e6;
+  border: 1px solid #43a3e6;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  padding: 8px 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.3s ease background;
+  width: 100%;
+}
+
+form button:hover {
+  background: #fff;
+  color: #43a3e6;
+  transition: 0.3s ease background;
 }
