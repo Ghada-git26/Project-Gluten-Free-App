@@ -4,21 +4,21 @@ const Schema = mongoose.Schema;
 const recipeSchema = new Schema({
     name: { type: String, required: true },
     category: { type: String, required: true, enum: ["Main dish", "Dessert", "Beverage"] },
-    prep: { type: Number, required: true },
+    prep: Number,
     cook: Number,
-    difficultie: {
+    difficulty: {
         type: String,
         enum: ["Easy", "more effort", "challenging"]
     },
     nutrition: {
         kcal: Number,
         carbs: Number,
-        fibre: Number,
+        fiber: Number,
         protein: Number,
         sugars: Number,
         salts: Number,
     },
-    ingridients: [String],
+    ingredients: [String],
     image: String,
     // rate: [{ type: Schema.Types.ObjectId, ref: "Rate" }],
 });

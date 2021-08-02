@@ -108,3 +108,22 @@ table {
     text-align: center;
     font-size: 24px;
 }
+
+.recipe-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.recipe-form input,
+.recipe-form select {
+    display: block;
+    border-radius: 5px;
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(133, 133, 133);
+    border-image: initial;
+}

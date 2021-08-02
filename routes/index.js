@@ -16,6 +16,35 @@ router.get('/recipe', async function(req, res, next) {
     });
 });
 
+
+//Create recipe
+//Get
+router.get("/createRecipe", (req, res) => {
+    Recipe.find()
+        .then((dbRes) => {
+            res.render("creatform.hbs", {
+                recipes: dbRes,
+            });
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+});
+
+//Post
+router.post("/createRecipe", (req, res) => {
+    console.log(req.body);
+    Recipe.create(req.body)
+        .then((createdRecipe) => {
+            console.log(createdRecipe);
+            res.redirect("/recipe");
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+});
+//Display oneRecipe
+
 router.get("/oneRecipe/:id", (req, res) => {
     Recipe.findById(req.params.id)
         .then((dbRes) => {
