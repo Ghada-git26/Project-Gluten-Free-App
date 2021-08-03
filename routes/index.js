@@ -2,9 +2,21 @@ const express = require('express');
 const router = express.Router();
 const Recipe = require("../models/recipe");
 const mongoose = require("mongoose");
+//Get home-page
+router.get("/", (req, res) => {
+    Recipe.find()
+        .then((dbRes) => {
+            res.render("index.hbs", {
+                recipes: dbRes,
+            });
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+});
 
 
-/* GET home page. */
+/* GET recipe page. */
 router.get('/recipe', async function(req, res, next) {
     var mainDishes = await Recipe.find({ category: 'Main dish' });
     var desserts = await Recipe.find({ category: 'Dessert' });

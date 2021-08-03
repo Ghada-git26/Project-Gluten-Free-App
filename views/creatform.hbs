@@ -1,6 +1,6 @@
+<h1 class="page-title">Create new Recipe</h1>
 <div class="one-recipe recipe-form">
   <div class="border1">
-    <h2> Create new Recipe </h2>
     <form method="POST" action="/createRecipe">
       <div>
         <label for="name">Name</label>
@@ -54,9 +54,11 @@
         <div id="ingredients">
         </div>
       </div>
-      <button type="submit">Submit !</button>
-      <button type="button" onclick="addIngredient()">Add Ingredient</button>
-      <button type="button" onclick="removeIngredient()">Remove Ingredient</button>
+      <div class="form-buttons">
+        <button type="submit" class="recipe-btn">Submit !</button>
+        <button type="button" class="recipe-btn" onclick="addIngredient()">Add Ingredient</button>
+        <button type="button" class="recipe-btn" onclick="removeIngredient()">Remove Ingredient</button>
+      </div>
     </form>
 
   </div>

@@ -1,3 +1,4 @@
+<h1 class="page-title">{{recipe.name}}</h1>
 <div class="one-recipe recipe-form">
     <div class="border1">
         <h2> Update Recipe </h2>
@@ -57,9 +58,12 @@
                     {{/each}}
                 </div>
             </div>
-            <button type="submit">Submit !</button>
-            <button type="button" onclick="addIngredient()">Add Ingredient</button>
-            <button type="button" onclick="removeIngredient()">Remove Ingredient</button>
+            <div class="form-buttons">
+                <button type="submit" class="recipe-btn">Submit !</button>
+                <button type="button" class="recipe-btn" onclick="addIngredient()">Add Ingredient</button>
+                <button type="button" class="recipe-btn" onclick="removeIngredient()">Remove Ingredient</button>
+            </div>
+
         </form>
 
     </div>

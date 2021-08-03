@@ -1,22 +1,22 @@
 {{!-- /views/signupForm.hbs --}}
-<div class="signup-shape">
+<div class="auth-form box">
     <form method="POST" action="/signup">
         <div>
             <h2>Create account !</h2>
 
             <div>
                 <label for="username">Username</label>
-                <input type="text" id="username" name="username" />
+                <input type="text" id="username" name="username" required/>
             </div>
 
             <div>
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" />
+                <input type="email" id="email" name="email" required/>
             </div>    
 
             <div>
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" />
+                <input type="password" id="password" name="password" required/>
             </div>
 
             <button type="submit">Create account</button>
@@ -28,7 +28,7 @@
         </div>
         <div class="help-msg">
             <p>Already a user ?</p>
-            <a class="sign-in-link" href="/signin" >Register</a>
+            <a class="sign-in-link" href="/signin" >Sign In</a>
         </div>
         
     </form>
