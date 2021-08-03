@@ -13,6 +13,7 @@ nav {
     align-items: center;
     height: 5.5em;
     border-radius: 4px;
+    margin-bottom: 25px;
 }
 
 footer {
@@ -301,4 +302,41 @@ form label {
 .sign-in-link {
     color: blue;
     font-weight: bold;
+}
+
+.definition,
+.foodList,
+.Tips,
+.websites,
+.resources {
+    margin: 20px;
+    padding: 10px
+}
+
+.foodList {
+    margin: 20px;
+}
+
+.Tips img {
+    width: 500px;
+    height: 500px;
+    text-align: center;
+}
+
+nav img {
+    max-width: 70px;
+    max-height: 70px;
+}
+
+.app-logo {
+    display: flex;
+    align-items: center;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex>.box {
+    margin: 20px;
 }
