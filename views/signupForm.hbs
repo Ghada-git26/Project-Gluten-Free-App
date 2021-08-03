@@ -20,9 +20,15 @@
             </div>
 
             <button type="submit">Create account</button>
+            
+            {{#if errorMessage}}
+                <p>{{errorMessage}}</p>
+            {{/if}}
+
         </div>
         <div class="help-msg">
-            <a href="/signin" >Already a user, Register</a>
+            <p>Already a user ?</p>
+            <a class="sign-in-link" href="/signin" >Register</a>
         </div>
         
     </form>

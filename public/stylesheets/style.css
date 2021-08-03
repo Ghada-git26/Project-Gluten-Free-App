@@ -162,6 +162,12 @@ form button:hover {
   transition: 0.3s ease background;
 }
 
+.sign-up-link,
+.sign-in-link {
+  color: blue;
+  font-weight: bold;
+}
+
 /* .nav-register {
   margin-right: -2.5px;
 }

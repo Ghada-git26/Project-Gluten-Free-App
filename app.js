@@ -1,6 +1,9 @@
 // app.js
 
 require("dotenv").config();
+require("./config/mongo");
+const hbs = require("hbs");
+
 var createError = require("http-errors");
 var express = require("express");
 var path = require("path");

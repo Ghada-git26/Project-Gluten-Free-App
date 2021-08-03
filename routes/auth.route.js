@@ -16,37 +16,57 @@ router.get("/signup", (req, res, next) => {
   res.render("signupForm.hbs");
 });
 
+router.get("/profile", (req, res, next) => {
+  res.render("profile.hbs");
+});
+
 // POST routes:
 // ----------------------------------------
 
-// For signup page:
+// For sign-up page:
 router.post("/signup", async (req, res, next) => {
   try {
-    const user = req.body;
-    console.log("user:", user);
-    if (!user.username || !user.password || !user.email) {
-      res.render("signupForm.hbs", {
-        errorMessage: "Please provide an email and a password",
-      });
-      return;
-    }
-    const createdUser = await User.create(user);
-    console.log("toCreatUser: ", user);
-    console.log("createdUser: ", createdUser);
-    if (user) {
-      res.render("/signupForm.hbs", {
-        errorMessage: "Email taken",
-      });
-      return;
-    }
-    const hashedPassword = bcrypt.hashSync(user.password, saltRounds);
-    user.password = hashedPassword;
-    User.create(user);
-    res.redirect("/profile");
-  } catch (error) {
-    next(error);
+    console.log("The format data: ", req.body);
+    const newUser = req.body;
+    await User.create(newUser)
+      .then((userFromDB) => {
+        console.log("New user created: ", userFromDB);
+        res.redirect("/");
+      })
+      .catch((error) => next(error));
+  } catch (err) {
+    next(err);
   }
 });
+
+// For sign-up page:
+// router.post("/signup", async (req, res, next) => {
+//   try {
+//     const user = req.body;
+//     console.log("user:", user);
+//     if (!user.username || !user.password || !user.email) {
+//       res.render("signupForm.hbs", {
+//         errorMessage: "Please provide an email and a password",
+//       });
+//       return;
+//     }
+//     const createdUser = await User.create(user);
+//     console.log("toCreatUser: ", user);
+//     console.log("createdUser: ", createdUser);
+//     if (user) {
+//       res.render("/signupForm.hbs", {
+//         errorMessage: "Email taken",
+//       });
+//       return;
+//     }
+//     const hashedPassword = bcrypt.hashSync(user.password, saltRounds);
+//     user.password = hashedPassword;
+//     User.create(user);
+//     res.redirect("/profile");
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 module.exports = router;
 
