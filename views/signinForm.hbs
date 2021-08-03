@@ -1,17 +1,17 @@
 {{!-- /views/signinForm.hbs --}}
-<div class="signin-shape" >
+<div class="auth-form box" >
     <form method="POST" action="/signin">
         <div>
-            <h2>Register !</h2>
+            <h2>Sign In !</h2>
 
             <div>
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" />
+                <input type="email" id="email" name="email" required/>
             </div>    
 
             <div>
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" />
+                <input type="password" id="password" name="password" required/>
             </div>
 
             <button type="submit">Register</button>
@@ -24,7 +24,7 @@
         <br>
         <div class="help-msg">
             <span>Not already registered ?</span>
-            <a class="sign-in-link" href="/signup" >Create Account</a>
+            <a class="sign-in-link" href="/signup" >Create Account !</a>
         </div>  
 
     </form>

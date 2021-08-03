@@ -6,19 +6,19 @@ saltRounds = 10;
 
 const users = [
   {
-    username: "toto",
+    // username: "toto",
     email: "toto@gmail.com",
     password: bcryptjs.hashSync("12345", saltRounds), // encryption
     isAdmin: 1,
   },
   {
-    username: "Mariadb",
+    // username: "Mariadb",
     email: "maria@gmail.com",
     password: bcryptjs.hashSync("12345", saltRounds), // encryption
     isAdmin: 0,
   },
   {
-    username: "Roger",
+    // username: "Roger",
     email: "roger@gmail.com",
     password: bcryptjs.hashSync("12345", saltRounds), // encryption
     isAdmin: 0,

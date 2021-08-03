@@ -1,0 +1,67 @@
+<h1 class="page-title">Create new Recipe</h1>
+<div class="one-recipe recipe-form">
+  <div class="border1">
+    <form method="POST" action="/createRecipe">
+      <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required />
+      </div>
+      <div>
+        <label for="image">Image</label>
+        <input type="text" id="image" name="image" />
+      </div>
+      <div>
+        <label for="category">Category</label>
+        <select name="category" required>
+          <option value="Main dish">Main dish</option>
+          <option value="Dessert">Dessert</option>
+          <option value="Beverage">Beverage</option>
+        </select>
+      </div>
+      <div>
+        <label for="difficulty">Difficulty</label>
+        <select name="difficulty">
+          <option value="Easy">Easy</option>
+          <option value="More effort">More effort</option>
+          <option value="Challenging">Challenging</option>
+        </select>
+      </div>
+      <div>
+        <label for="nutrition.kcal">Kcal</label>
+        <input type="number" name="nutrition.kcal" />
+
+        <label for="nutrition.carbs">Carbs</label>
+        <input type="number" name="nutrition.carbs" />
+
+        <label for="nutrition.fiber">Fiber</label>
+        <input type="number" name="nutrition.fiber" />
+
+        <label for="nutrition.protein">Protein</label>
+        <input type="number" name="nutrition.protein" />
+
+        <label for="nutrition.sugars">Sugars</label>
+        <input type="number" name="nutrition.sugars" />
+
+        <label for="nutrition.salts">Salts</label>
+        <input type="number" name="nutrition.salts" />
+      </div>
+      <div>
+        <label for="cook">Cooking Time</label>
+        <input id="cook" type="number" name="cook" />
+      </div>
+      <div>
+        <label for="ingredients">Ingredients</label>
+        <div id="ingredients">
+        </div>
+      </div>
+      <div class="form-buttons">
+        <button type="submit" class="recipe-btn">Submit !</button>
+        <button type="button" class="recipe-btn" onclick="addIngredient()">Add Ingredient</button>
+        <button type="button" class="recipe-btn" onclick="removeIngredient()">Remove Ingredient</button>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+<script src="/javascripts/recipe-crud.js"></script>

@@ -33,53 +33,78 @@ router.post("/signup", async (req, res, next) => {
   try {
     console.log("The format data: ", req.body);
     const newUser = req.body;
-    if (!newUser.username || !newUser.password || !newUser.email) {
-      console.log("USERNAME, PASSWORD, EMAIL");
+
+    if (newUser.password === "" || newUser.email === "") {
       res.render("signupForm.hbs", {
         errorMessage: "Please provide a username, an email and a password \n",
       });
       return;
     } else {
-      console.log("OK FOR USERNAME, PASSWORD, EMAIL");
+      console.log("OK NON EMPTY PASSWORD, EMAIL");
     }
+
     const foundUser = await User.findOne({ email: newUser.email });
     console.log("foundUser: ", foundUser);
     if (foundUser) {
       console.log("foundUser: ", foundUser);
       res.render("signupForm.hbs", {
-        errorMessage: "Email taken",
+        errorMessage: "Email exists. Sign-In",
       });
       return;
     }
-    const hashedPassword = bcrypt.hashSync(newUser.password, saltRounds);
+
+    const hashedPassword = bcryptjs.hashSync(newUser.password, saltRounds);
     newUser.password = hashedPassword;
     console.log("newUser: ", newUser);
-    await User.create(newUser)
-      .then((userFromDB) => {
-        console.log("New user created: ", userFromDB);
-        res.render("/signup");
-      })
-      .catch((error) => next(error));
-    return;
-  } catch (err) {
-    next(err);
+    const createdUser = await User.create(newUser);
+    res.redirect("/profile");
+  } catch (error) {
+    next(error);
   }
 });
 
 // For sign-in/register page:
 router.post("/signin", async (req, res, next) => {
   try {
-    console.log("The format data: ", req.body);
-    const newUser = req.body;
-    await User.find(newUser)
-      .then((userFromDB) => {
-        console.log("New user created: ", userFromDB);
-        res.redirect("/profile");
-      })
-      .catch((error) => next(error));
-  } catch (err) {
-    next(err);
+    const foundUser = await User.findOne({ email: req.body.email });
+    console.log("foundUser: ", foundUser);
+    if (!foundUser) {
+      res.render("signinForm.hbs", {
+        errorMessage: "Bad credentials",
+      });
+      return;
+    }
+
+    const isValidPassword = bcryptjs.compareSync(
+      req.body.password,
+      foundUser.password
+    );
+
+    if (isValidPassword) {
+      req.session.currentUser = {
+        _id: foundUser._id,
+      };
+
+      res.redirect("/profile");
+    } else {
+      res.render("signinForm.hbs", {
+        errorMessage: "Bad credentials",
+      });
+      return;
+    }
+  } catch (error) {
+    next(error);
   }
 });
+
+// router.get("/logout", (req, res, next) => {
+//   req.session.destroy((error) => {
+//     if (error) {
+//       next(error);
+//     } else {
+//       res.redirect("/signin");
+//     }
+//   });
+// });
 
 module.exports = router;

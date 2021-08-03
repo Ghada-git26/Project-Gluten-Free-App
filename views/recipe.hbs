@@ -1,0 +1,27 @@
+<h1 class="page-title">Gluten Free Recipes</h1>
+<div class="recipes-container">
+  <div class="main-dishes box">
+    <div class="head">
+      Main dishes
+    </div>
+    {{#each mainDishes}}
+    {{>recipePartial}}
+    {{/each}}
+  </div>
+  <div class="Desserts box">
+    <div class="head">
+      Desserts
+    </div>
+    {{#each desserts}}
+    {{>recipePartial}}
+    {{/each}}
+  </div>
+  <div class="Beverages box">
+    <div class="head">
+      Beverages
+    </div>
+    {{#each beverages}}
+    {{>recipePartial}}
+    {{/each}}
+  </div>
+</div>

@@ -1,0 +1,72 @@
+<h1 class="page-title">{{recipe.name}}</h1>
+<div class="one-recipe recipe-form">
+    <div class="border1">
+        <h2> Update Recipe </h2>
+        <form method="POST" action="/update/{{recipe._id}}">
+            <div>
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" value="{{recipe.name}}" required />
+            </div>
+            <div>
+                <label for="image">Image</label>
+                <input type="text" id="image" name="image" value="{{recipe.image}}" />
+            </div>
+            <div>
+                <label for="category">Category</label>
+                <select name="category" required>
+                    <option value="Main dish" {{mainDishSelected}}>Main dish</option>
+                    <option value="Dessert" {{dessertSelected}}>Dessert</option>
+                    <option value="Beverage" {{beverageSelected}}>Beverage</option>
+                </select>
+            </div>
+            <div>
+                <label for="difficulty">Difficulty</label>
+                <select name="difficulty">
+                    <option value="Easy" {{easySelected}}>Easy</option>
+                    <option value="More effort" {{moreEffortSelected}}>More effort</option>
+                    <option value="Challenging" {{challengingSelected}}>Challenging</option>
+                </select>
+            </div>
+            <div>
+                <label for="nutrition.kcal">Kcal</label>
+                <input type="number" name="nutrition.kcal" value="{{recipe.nutrition.kcal}}" />
+
+                <label for="nutrition.carbs">Carbs</label>
+                <input type="number" name="nutrition.carbs" value="{{recipe.nutrition.carbs}}" />
+
+                <label for="nutrition.fiber">Fiber</label>
+                <input type="number" name="nutrition.fiber" value="{{recipe.nutrition.fiber}}" />
+
+                <label for="nutrition.protein">Protein</label>
+                <input type="number" name="nutrition.protein" value="{{recipe.nutrition.protein}}" />
+
+                <label for="nutrition.sugars">Sugars</label>
+                <input type="number" name="nutrition.sugars" value="{{recipe.nutrition.sugars}}" />
+
+                <label for="nutrition.salts">Salts</label>
+                <input type="number" name="nutrition.salts" value="{{recipe.nutrition.salts}}" />
+            </div>
+            <div>
+                <label for="cook">Cooking Time</label>
+                <input id="cook" type="number" name="cook" value="{{recipe.cook}}" />
+            </div>
+            <div>
+                <label for="ingredients">Ingredients</label>
+                <div id="ingredients">
+                    {{#each recipe.ingredients}}
+                    <input type="text" name="ingredients" value="{{this}}">
+                    {{/each}}
+                </div>
+            </div>
+            <div class="form-buttons">
+                <button type="submit" class="recipe-btn">Submit !</button>
+                <button type="button" class="recipe-btn" onclick="addIngredient()">Add Ingredient</button>
+                <button type="button" class="recipe-btn" onclick="removeIngredient()">Remove Ingredient</button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+<script src="/javascripts/recipe-crud.js"></script>
