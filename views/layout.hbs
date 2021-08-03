@@ -1,3 +1,5 @@
+{{!-- /views/index.hbs --}}
+
 <!DOCTYPE html>
 <html lang='en'>
 
@@ -7,7 +9,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
 
-    <title>Basic - Site (NodeJS, Express, Mongoose, Hbs</title>
+    <title>Gluten Free App</title>
 
       <link rel='stylesheet' href='/stylesheets/style.css' />
       <link rel='preconnect' href='https://fonts.googleapis.com' />
@@ -17,11 +19,14 @@
   </head>
 
   <nav>
-    <a href='/'>index</a>
-    <a href='/user'>user</a>
-    <a href='/link3'>link3</a>
-    <a href='/link4'>link4</a>
-    <a href='/link5'>link5</a>
+    <a href='/'>Home</a>
+    <a href='/link3'>Link3</a>
+    <a href='/link4'>Link4</a>
+    <a href='/link5'>Link5</a>
+    <div>
+      <a class="nav-register" href='/signin'>Register</a> 
+      <a class="nav-create-account" href='/signup'>| Create Account</a>                     
+    </div>
   </nav>
 
   {{{body}}}
