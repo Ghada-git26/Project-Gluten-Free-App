@@ -127,3 +127,22 @@ table {
     border-color: rgb(133, 133, 133);
     border-image: initial;
 }
+
+.delete {
+    border: grey 2px solid;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.6);
+    font-family: 'Style Script';
+    font-weight: bolder;
+    padding: 3px;
+    font-size: 16px;
+    display: block;
+    margin: auto;
+    width: 100px;
+    text-align: center;
+}
+
+.UDlink {
+    display: flex;
+    flex-direction: row;
+}

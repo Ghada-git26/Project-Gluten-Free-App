@@ -56,4 +56,48 @@ router.get("/oneRecipe/:id", (req, res) => {
 
 });
 
+// delete recipe
+
+router.get("/delete/:id", (req, res) => {
+    Recipe.findByIdAndDelete(req.params.id)
+        .then(() => {
+            res.redirect("/recipe");
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+});
+
+//Update recipe
+router.get("/update/:id", (req, res) => {
+    Recipe.findById(req.params.id)
+        .then((dbRes) => {
+            res.render("updateform.hbs", {
+                recipe: dbRes,
+                mainDishSelected: dbRes.category == 'Main dish' ? 'selected' : '',
+                dessertSelected: dbRes.category == 'Dessert' ? 'selected' : '',
+                beverageSelected: dbRes.category == 'Beverage' ? 'selected' : '',
+
+                easySelected: dbRes.category == 'Easy' ? 'selected' : '',
+                moreEffortSelected: dbRes.category == 'More effort' ? 'selected' : '',
+                challengingSelected: dbRes.category == 'Challenging' ? 'selected' : '',
+            });
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+});
+
+router.post("/update/:id", (req, res) => {
+    Recipe.findByIdAndUpdate(req.params.id, req.body)
+        .then(() => {
+            res.redirect("/recipe");
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+});
+
+
+
 module.exports = router;

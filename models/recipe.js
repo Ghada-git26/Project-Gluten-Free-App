@@ -8,7 +8,7 @@ const recipeSchema = new Schema({
     cook: Number,
     difficulty: {
         type: String,
-        enum: ["Easy", "more effort", "challenging"]
+        enum: ["Easy", "More effort", "Challenging"]
     },
     nutrition: {
         kcal: Number,

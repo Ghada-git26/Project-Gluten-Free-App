@@ -8,6 +8,6 @@ function addIngredient() {
 function removeIngredient() {
     const ingredients = document.getElementById('ingredients');
     if (ingredients.children.length > 0) {
-        ingredients.removeChild(ingredients.lastChild);
+        ingredients.removeChild(ingredients.children[ingredients.children.length - 1]);
     }
 }

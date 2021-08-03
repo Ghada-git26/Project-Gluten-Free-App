@@ -7,7 +7,7 @@
          category: "Main dish",
          prep: 30,
          cook: 75,
-         difficulty: "more effort",
+         difficulty: "More effort",
          nutrition: {
              kcal: 524,
              carbs: 28,
@@ -139,7 +139,7 @@
          category: "Dessert",
          prep: 25,
          cook: 60,
-         difficulty: "more effort",
+         difficulty: "More effort",
          nutrition: {
              kcal: 514,
              carbs: 35,
