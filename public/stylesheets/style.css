@@ -101,9 +101,9 @@ form label {
 }
 
 .home-btn {
-  border: 1px solid #e6e7e8;
+  /* border: 0px solid #e6e7e8; */
   border-radius: 4px;
-  width: 500px;
+  width: 525px;
   text-align: center;
   margin: auto;
 }
@@ -114,6 +114,7 @@ form label {
   width: 300px;
   text-align: center;
   margin: 30px auto;
+  box-shadow: 0 0.5px 1px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 }
 
 .signup-shape {
@@ -122,6 +123,11 @@ form label {
   width: 300px;
   text-align: center;
   margin: 30px auto;
+  box-shadow: 0 0.5px 1px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+.help-msg {
+  font-size: 10px;
 }
 
 form input,
@@ -132,6 +138,7 @@ form button {
   padding: 4px;
   width: 100%;
   margin-bottom: 20px;
+  border: 1px solid #d9dadc;
 }
 
 form button {
@@ -154,3 +161,11 @@ form button:hover {
   color: #43a3e6;
   transition: 0.3s ease background;
 }
+
+/* .nav-register {
+  margin-right: -2.5px;
+}
+
+.nav-create-account {
+  margin-left: -75px;
+} */

@@ -48,13 +48,6 @@ router.post("/signup", async (req, res, next) => {
   }
 });
 
-// For signin page:
-// router.post("/signin", async (req, res, next) => {
-//   try {
-//     const
-//   }
-// })
-
 module.exports = router;
 
 //   res.render("signup/profile.hbs");
