@@ -14,14 +14,18 @@
                 <input type="password" id="password" name="password" required/>
             </div>
 
-            <button type="submit">Sign In</button>
-        </div>
-        <div class="help-msg">
-            <p>Not already registered ?</p>
-            <a class="sign-in-link" href="/signup" >Create Account</a>
-        </div>  
+            <button type="submit">Register</button>
 
-        {{!--  display error message here --}}
+            {{#if errorMessage}}
+                <p>{{errorMessage}}</p>
+            {{/if}}
+
+        </div>
+        <br>
+        <div class="help-msg">
+            <span>Not already registered ?</span>
+            <a class="sign-in-link" href="/signup" >Create Account !</a>
+        </div>  
 
     </form>
 </div>    
