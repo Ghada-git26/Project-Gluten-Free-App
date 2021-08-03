@@ -1,24 +1,26 @@
 require("dotenv").config({ path: __dirname + "/./../.env" });
 const userModel = require("./../models/User.model");
 const mongoose = require("mongoose");
+const bcryptjs = require("bcryptjs"); // for pwd encryption.
+saltRounds = 10;
 
 const users = [
   {
     username: "toto",
     email: "toto@gmail.com",
-    password: "12345",
+    password: bcryptjs.hashSync("12345", saltRounds), // encryption
     isAdmin: 1,
   },
   {
     username: "Mariadb",
     email: "maria@gmail.com",
-    password: "12345",
+    password: bcryptjs.hashSync("12345", saltRounds), // encryption
     isAdmin: 0,
   },
   {
     username: "Roger",
     email: "roger@gmail.com",
-    password: "12345",
+    password: bcryptjs.hashSync("12345", saltRounds), // encryption
     isAdmin: 0,
   },
 ];

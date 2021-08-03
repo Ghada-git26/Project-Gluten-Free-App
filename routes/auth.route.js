@@ -6,32 +6,75 @@ const User = require("../models/User.model");
 const bcryptjs = require("bcryptjs");
 const saltRounds = 10;
 
-// GET routes:
 // ----------------------------------------
+// GET routes created:
+// ----------------------------------------
+// sign-in / register page.
 router.get("/signin", (req, res, next) => {
   res.render("signinForm.hbs");
 });
 
+// sign-up / create account page.
 router.get("/signup", (req, res, next) => {
   res.render("signupForm.hbs");
 });
 
+// profile user page.
 router.get("/profile", (req, res, next) => {
-  res.render("profile.hbs");
+  res.render("userProfile.hbs");
 });
 
-// POST routes:
+// ----------------------------------------
+// POST routes created:
 // ----------------------------------------
 
-// For sign-up page:
+// For sign-up/create account page:
 router.post("/signup", async (req, res, next) => {
   try {
     console.log("The format data: ", req.body);
     const newUser = req.body;
+    if (!newUser.username || !newUser.password || !newUser.email) {
+      console.log("USERNAME, PASSWORD, EMAIL");
+      res.render("signupForm.hbs", {
+        errorMessage: "Please provide a username, an email and a password \n",
+      });
+      return;
+    } else {
+      console.log("OK FOR USERNAME, PASSWORD, EMAIL");
+    }
+    const foundUser = await User.findOne({ email: newUser.email });
+    console.log("foundUser: ", foundUser);
+    if (foundUser) {
+      console.log("foundUser: ", foundUser);
+      res.render("signupForm.hbs", {
+        errorMessage: "Email taken",
+      });
+      return;
+    }
+    const hashedPassword = bcrypt.hashSync(newUser.password, saltRounds);
+    newUser.password = hashedPassword;
+    console.log("newUser: ", newUser);
     await User.create(newUser)
       .then((userFromDB) => {
         console.log("New user created: ", userFromDB);
-        res.redirect("/");
+        res.render("/signup");
+      })
+      .catch((error) => next(error));
+    return;
+  } catch (err) {
+    next(err);
+  }
+});
+
+// For sign-in/register page:
+router.post("/signin", async (req, res, next) => {
+  try {
+    console.log("The format data: ", req.body);
+    const newUser = req.body;
+    await User.find(newUser)
+      .then((userFromDB) => {
+        console.log("New user created: ", userFromDB);
+        res.redirect("/profile");
       })
       .catch((error) => next(error));
   } catch (err) {
@@ -39,63 +82,4 @@ router.post("/signup", async (req, res, next) => {
   }
 });
 
-// For sign-up page:
-// router.post("/signup", async (req, res, next) => {
-//   try {
-//     const user = req.body;
-//     console.log("user:", user);
-//     if (!user.username || !user.password || !user.email) {
-//       res.render("signupForm.hbs", {
-//         errorMessage: "Please provide an email and a password",
-//       });
-//       return;
-//     }
-//     const createdUser = await User.create(user);
-//     console.log("toCreatUser: ", user);
-//     console.log("createdUser: ", createdUser);
-//     if (user) {
-//       res.render("/signupForm.hbs", {
-//         errorMessage: "Email taken",
-//       });
-//       return;
-//     }
-//     const hashedPassword = bcrypt.hashSync(user.password, saltRounds);
-//     user.password = hashedPassword;
-//     User.create(user);
-//     res.redirect("/profile");
-//   } catch (error) {
-//     next(error);
-//   }
-// });
-
 module.exports = router;
-
-//   res.render("signup/profile.hbs");
-//   // console.log("The form data:", req.body);
-//   bcryptjs
-//     .genSalt(saltRounds)
-//     .then((salt) => {
-//       console.log(user.password);
-//       return bcryptjs.hash(user.password, salt);
-//     })
-//     .then((hashedPassword) => {
-//       console.log("username:", user.username);
-//       console.log("email:", user.email);
-//       console.log("passwordHashed:", hashedPassword);
-//       user.password = hashedPassword;
-//       console.log("Newly created user is: ", user);
-//       const createdUser = User.create(user);
-//     })
-//     .catch((error) => next(error));
-// });
-
-//   return User.create({
-//     username,
-//     email,
-//     passwordHashed: hashedPassword,
-//   });
-// })
-// .then((userFromDB) => {
-//   console.log("Newly created user is: ", userFromDB);
-// })
-// .catch((error) => next(error));
