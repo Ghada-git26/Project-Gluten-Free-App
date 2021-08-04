@@ -20,17 +20,30 @@
 
 <nav class="box">
   <div class="app-logo">
-    <img src="./images/gluten-free-icon.png" alt="gluten-free-icon">
+    <img src="/images/gluten-free-icon.png" alt="gluten-free-icon">
     <h1>Gluten Free UP</h1>
   </div>
 
   <a href='/'>Home</a>
   <a href='/recipe'>All recipes</a>
+  {{#if isAdmin}}
   <a href='/createRecipe'>Add Recipe</a>
+  {{/if}}
+  {{#if currentUser}}
   <a href='/profile'>My Profile</a>
+  {{/if}}
+
   <div>
+    {{#if currentUser}}
+    <span>Hello {{currentUser.username}} !</span>
+    <span> | </span>
+    <a class="nav-register" href='/logout'>Sign Out</a>
+    {{else}}
     <a class="nav-register" href='/signin'>Sign In</a>
-    <a class="nav-create-account" href='/signup'>| Create Account</a>
+    <span> | </span>
+    <a class="nav-create-account" href='/signup'>Create Account</a>
+    {{/if}}
+
   </div>
 </nav>
 

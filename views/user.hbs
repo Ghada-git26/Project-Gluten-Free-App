@@ -1,0 +1,10 @@
+
+<h1>Welcome to Gluten Free Up : {{user.username}}</h1>
+
+<div class="profile"> 
+    <h1>Your favorite recipes <img src="/images/welcome.png"></h1>
+</div>
+
+{{#each user.favoriteRecipes}}
+{{>recipePartial}}
+{{/each}}

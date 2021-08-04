@@ -340,3 +340,32 @@ nav img {
 .flex>.box {
     margin: 20px;
 }
+
+.favorite-btn {
+    width: 30px;
+    height: 25px;
+    border-radius: 30px;
+    display: inline-block;
+    padding-bottom: 6px;
+    text-align: center;
+    text-decoration: unset;
+}
+
+.not-favorite {
+    color: black;
+    border: 1px solid black;
+}
+
+.favorite {
+    color: red;
+    border: 1px solid red;
+}
+
+.profile img {
+    width: 100px;
+    height: 100px;
+}
+
+.profile {
+    text-align: center;
+}

@@ -6,13 +6,14 @@
         <ol>
             {{#each recipe.ingredients}}
             <li>{{this}}</li>
-            
+
             {{/each}}
         </ol>
     </div>
 </div>
+{{#if isAdmin}}
 <div class="UDlink">
-<a href="/update/{{recipe._id}}" class="recipe-btn">Update recipe</a>
-<a href="/delete/{{recipe._id}}" class="recipe-btn">Delete recipe</a>
-
+    <a href="/update/{{recipe._id}}" class="recipe-btn">Update recipe</a>
+    <a href="/delete/{{recipe._id}}" class="recipe-btn">Delete recipe</a>
 </div>
+ {{/if}}
