@@ -1,28 +1,30 @@
 <div class="one-recipe">
   <section class="border1">
     <div class="header">
+      {{#if this.isUserFavourite}}
+      <a href="/recipe/unsetFavourite/{{this._id}}" class="favorite-btn favorite">&hearts;</a>
+      {{else}}
+      <a href="/recipe/setFavourite/{{this._id}}" class="favorite-btn not-favorite">&hearts;</a>
+      {{/if}}
+      <img class="recipe-image" src="{{this.image}}">
       <div>
         <h4>
           <a href="/oneRecipe/{{this._id}}">{{this.name}}</a>
-          {{#if this.isUserFavourite}}
-          <a href="/recipe/unsetFavourite/{{this._id}}" class="favorite-btn favorite">&hearts;<a>
-          {{else}}
-          <a href="/recipe/setFavourite/{{this._id}}" class="favorite-btn not-favorite">&hearts;<a>
-          {{/if}}
         </h4>
-        <h4>({{this.difficulty}})</h4>
-        <p>Rated xx</p>
+        <h4>Difficulty : <span class="difficulty-{{this.difficulty}}"></span></h4>
       </div>
-      <img class="recipe-image" src="{{this.image}}">
     </div>
     <div class="details">
       <div>
         <span>Preparation time : {{this.prep}} min</span> <br>
         <span>Cooking time : {{this.cook}} min </span>
       </div>
-      <h5>Nutritious Value</h5>
+      
       <table>
-        <tr class="table-row">
+        <tr>
+          <th colspan="6">Nutritious Value</th>
+        </tr>
+        <tr>
           <th class="table-head">Kcal</th>
           <th class="table-head">carbs</th>
           <th class="table-head">fiber</th>

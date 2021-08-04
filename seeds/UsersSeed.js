@@ -5,19 +5,19 @@ const bcryptjs = require("bcryptjs"); // for pwd encryption.
 saltRounds = 10;
 
 const users = [{
-        // username: "toto",
+        username: "toto",
         email: "toto@gmail.com",
         password: bcryptjs.hashSync("12345", saltRounds), // encryption
         isAdmin: true,
     },
     {
-        // username: "Mariadb",
+        username: "Mariadb",
         email: "maria@gmail.com",
         password: bcryptjs.hashSync("12345", saltRounds), // encryption
         isAdmin: false,
     },
     {
-        // username: "Roger",
+        username: "Roger",
         email: "roger@gmail.com",
         password: bcryptjs.hashSync("12345", saltRounds), // encryption
         isAdmin: false,

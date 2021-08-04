@@ -128,9 +128,9 @@ router.get("/update/:id", auth.requireAdmin, (req, res) => {
                 dessertSelected: dbRes.category == 'Dessert' ? 'selected' : '',
                 beverageSelected: dbRes.category == 'Beverage' ? 'selected' : '',
 
-                easySelected: dbRes.category == 'Easy' ? 'selected' : '',
-                moreEffortSelected: dbRes.category == 'More effort' ? 'selected' : '',
-                challengingSelected: dbRes.category == 'Challenging' ? 'selected' : '',
+                easySelected: dbRes.difficulty == 1 ? 'selected' : '',
+                moreEffortSelected: dbRes.difficulty == 2 ? 'selected' : '',
+                challengingSelected: dbRes.difficulty == 3 ? 'selected' : '',
             });
         })
         .catch((error) => {

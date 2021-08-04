@@ -7,7 +7,7 @@ const recipes = [{
         category: "Main dish",
         prep: 30,
         cook: 75,
-        difficulty: "More effort",
+        difficulty: 2,
         nutrition: {
             kcal: 524,
             carbs: 28,
@@ -34,7 +34,7 @@ const recipes = [{
         category: "Main dish",
         prep: 20,
         cook: 20,
-        difficulty: "Easy",
+        difficulty: 1,
         nutrition: {
             kcal: 284,
             carbs: 38,
@@ -67,7 +67,7 @@ const recipes = [{
         category: "Main dish",
         prep: 30,
         cook: 10,
-        difficulty: "Easy",
+        difficulty: 1,
         nutrition: {
             kcal: 351,
             carbs: 8,
@@ -98,11 +98,11 @@ const recipes = [{
 
 
     {
-        name: "Ginger cookie sandwiches with lemon mascarpone",
+        name: "Ginger cookie sandwiche",
         category: "Dessert",
         prep: 30,
         cook: 14,
-        difficulty: "Easy",
+        difficulty: 1,
         nutrition: {
             kcal: 227,
             carbs: 28,
@@ -139,7 +139,7 @@ const recipes = [{
         category: "Dessert",
         prep: 25,
         cook: 60,
-        difficulty: "More effort",
+        difficulty: 2,
         nutrition: {
             kcal: 514,
             carbs: 35,
@@ -163,7 +163,7 @@ const recipes = [{
         category: "Dessert",
         prep: 30,
         cook: 20,
-        difficulty: "Easy",
+        difficulty: 1,
         nutrition: {
             kcal: 388,
             carbs: 45,
@@ -194,7 +194,7 @@ const recipes = [{
         name: "Breakfast super-shake",
         category: "Beverage",
         prep: 5,
-        difficulty: "Easy",
+        difficulty: 1,
         nutrition: {
             kcal: 391,
             carbs: 50,
@@ -223,7 +223,7 @@ const recipes = [{
         name: "Two-minute breakfast smoothie",
         category: "Beverage",
         prep: 2,
-        difficulty: "Easy",
+        difficulty: 1,
         nutrition: {
             kcal: 156,
             carbs: 25,
@@ -247,7 +247,7 @@ const recipes = [{
         name: "Peach Melba smoothie",
         category: "Beverage",
         prep: 5,
-        difficulty: "Easy",
+        difficulty: 1,
         nutrition: {
             kcal: 161,
             carbs: 30,
