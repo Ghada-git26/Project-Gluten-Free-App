@@ -59,6 +59,7 @@ a:hover {
     border: 1px solid gray;
     border-radius: 10px;
     background-color: rgb(248, 219, 229, 0.4);
+    box-shadow: 0 0.5px 1px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 }
 
 .recipe-image {
@@ -457,10 +458,39 @@ nav img {
 
 textarea {
     display: block;
-    max-height: 150px;
-    height: 150px;
+    max-height: 100px;
+    height: 100px;
     max-width: 100%;
     width: 100%;
     box-sizing: border-box;
     resize: none;
+}
+
+.flex-form {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-form>div {
+    flex-grow: 1;
+}
+
+.flex-form>div:not(:first-child) {
+    padding-left: 5px;
+}
+
+.box>.one-recipe {
+    margin: 10px;
+}
+
+.centered-box>.box {
+    margin-top: 10px;
+}
+
+.centered-box.title {
+    text-align: center;
+}
+
+.centered-box.title h1.page-title {
+    display: inline;
 }

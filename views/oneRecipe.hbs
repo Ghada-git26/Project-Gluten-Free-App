@@ -1,50 +1,57 @@
-<div class="centered-box">
-    <h1 class="page-title">{{recipe.name}}</h1>
+<div class="centered-box title">
+    <h1 class="page-title">{{recipe.name}}</h1>         <a href="/update/{{recipe._id}}" class="recipe-btn">Update recipe</a>
+        <a href="/delete/{{recipe._id}}" class="recipe-btn">Delete recipe</a>
+
     {{#if isAdmin}}
     <div class="UDlink">
-        <a href="/update/{{recipe._id}}" class="recipe-btn">Update recipe</a>
-        <a href="/delete/{{recipe._id}}" class="recipe-btn">Delete recipe</a>
     </div>
     {{/if}}
-    {{>recipePartial recipe}}
-    <div class="one-recipe">
-        <div class="border1">
-            <h1>ingredients</h1>
-            <ol>
-                {{#each recipe.ingredients}}
-                <li>{{this}}</li>
+</div>
+<div class="centered-box">
+    <div class="box">
+            {{>recipePartial recipe}}
+            <div class="one-recipe">
+                <div class="border1">
+                    <h1>ingredients</h1>
+                    <ol>
+                        {{#each recipe.ingredients}}
+                        <li>{{this}}</li>
 
-                {{/each}}
-            </ol>
-        </div>
-    </div>
-    {{#each recipe.ratings}}
-    <div class="one-recipe">
-        <div class="border1">
-            {{this.User.username}} wrote : <br>{{this.Comment}}
-            <br>
-            {{this.User.username}} gave this recipe a rating of {{this.Rating}}
-        </div>
-    </div>
-    {{/each}}
-    <div class="one-recipe">
-        <div class="border1">
-            <form method="POST" action="/addComment/{{recipe._id}}">
-                <label for="Rating">Rate</label>
-                <select name="Rating">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-                <label for="Comment">Comment</label>
-                <textarea name="Comment" maxlength="255" required></textarea>
-                <div class="UDlink">
-                    <button class="recipe-btn">Add comment</button>
+                        {{/each}}
+                    </ol>
                 </div>
-            </form>
+            </div>
+    </div>
+</div>
+<div class="centered-box">
+    <div class="box">
+        <div class="one-recipe">
+            <div class="border1">
+                <form method="POST" action="/addComment/{{recipe._id}}">
+                    <label for="Rating">Rate</label>
+                    <select name="Rating">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <label for="Comment">Comment</label>
+                    <textarea name="Comment" required></textarea>
+                    <div class="UDlink">
+                        <button class="recipe-btn">Add comment</button>
+                    </div>
+                </form>
+            </div>
+            {{#each recipe.ratings}}
+            <div class="one-recipe">
+                <div class="border1">
+                    {{this.User.username}} wrote : <br>{{this.Comment}}
+                    <br>
+                    {{this.User.username}} gave this recipe a rating of {{this.Rating}}
+                </div>
+            </div>
+            {{/each}}
         </div>
     </div>
-
 </div>

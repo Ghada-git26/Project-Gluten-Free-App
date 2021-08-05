@@ -10,45 +10,63 @@
         <label for="image">Image</label>
         <input type="text" id="image" name="image" />
       </div>
-      <div>
-        <label for="category">Category</label>
-        <select name="category" required>
-          <option value="Main dish">Main dish</option>
-          <option value="Dessert">Dessert</option>
-          <option value="Beverage">Beverage</option>
-        </select>
+      <div class="flex-form">
+        <div>
+          <label for="category">Category</label>
+          <select name="category" required>
+            <option value="Main dish">Main dish</option>
+            <option value="Dessert">Dessert</option>
+            <option value="Beverage">Beverage</option>
+          </select>
+        </div>
+        <div>
+          <label for="difficulty">Difficulty</label>
+          <select name="difficulty">
+            <option value="1">Easy</option>
+            <option value="2">More effort</option>
+            <option value="3">Challenging</option>
+          </select>
+        </div>
       </div>
-      <div>
-        <label for="difficulty">Difficulty</label>
-        <select name="difficulty">
-          <option value="1">Easy</option>
-          <option value="2">More effort</option>
-          <option value="3">Challenging</option>
-        </select>
+      <div class="flex-form">
+        <div>
+          <label for="nutrition.kcal">Kcal</label>
+          <input type="number" name="nutrition.kcal" />
+        </div>
+        <div>
+          <label for="nutrition.carbs">Carbs</label>
+          <input type="number" name="nutrition.carbs" />
+        </div>
+        <div>
+          <label for="nutrition.fiber">Fiber</label>
+          <input type="number" name="nutrition.fiber" />
+        </div>
       </div>
-      <div>
-        <label for="nutrition.kcal">Kcal</label>
-        <input type="number" name="nutrition.kcal" />
-
-        <label for="nutrition.carbs">Carbs</label>
-        <input type="number" name="nutrition.carbs" />
-
-        <label for="nutrition.fiber">Fiber</label>
-        <input type="number" name="nutrition.fiber" />
-
-        <label for="nutrition.protein">Protein</label>
-        <input type="number" name="nutrition.protein" />
-
-        <label for="nutrition.sugars">Sugars</label>
-        <input type="number" name="nutrition.sugars" />
-
-        <label for="nutrition.salts">Salts</label>
-        <input type="number" name="nutrition.salts" />
+      <div class="flex-form">
+        <div>
+          <label for="nutrition.protein">Protein</label>
+          <input type="number" name="nutrition.protein" />
+        </div>
+        <div>
+          <label for="nutrition.sugars">Sugars</label>
+          <input type="number" name="nutrition.sugars" />
+        </div>
+        <div>
+          <label for="nutrition.salts">Salts</label>
+          <input type="number" name="nutrition.salts" />
+        </div>
       </div>
-      <div>
-        <label for="cook">Cooking Time</label>
-        <input id="cook" type="number" name="cook" />
+      <div class="flex-form">
+        <div>
+          <label for="cook">Cooking Time</label>
+          <input id="cook" type="number" name="cook" />
+        </div>
+        <div>
+          <label for="prep">Preparation Time</label>
+          <input id="prep" type="number" name="prep" />
+        </div>
       </div>
+
       <div>
         <label for="ingredients">Ingredients</label>
         <div id="ingredients">

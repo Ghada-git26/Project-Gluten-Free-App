@@ -11,44 +11,63 @@
                 <label for="image">Image</label>
                 <input type="text" id="image" name="image" value="{{recipe.image}}" />
             </div>
-            <div>
-                <label for="category">Category</label>
-                <select name="category" required>
-                    <option value="Main dish" {{mainDishSelected}}>Main dish</option>
-                    <option value="Dessert" {{dessertSelected}}>Dessert</option>
-                    <option value="Beverage" {{beverageSelected}}>Beverage</option>
-                </select>
+            <div class="flex-form">
+
+                <div>
+                    <label for="category">Category</label>
+                    <select name="category" required>
+                        <option value="Main dish" {{mainDishSelected}}>Main dish</option>
+                        <option value="Dessert" {{dessertSelected}}>Dessert</option>
+                        <option value="Beverage" {{beverageSelected}}>Beverage</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="difficulty">Difficulty</label>
+                    <select name="difficulty">
+                        <option value="1" {{easySelected}}>Easy</option>
+                        <option value="2" {{moreEffortSelected}}>More effort</option>
+                        <option value="3" {{challengingSelected}}>Challenging</option>
+                    </select>
+                </div>
             </div>
-            <div>
-                <label for="difficulty">Difficulty</label>
-                <select name="difficulty">
-                    <option value="1" {{easySelected}}>Easy</option>
-                    <option value="2" {{moreEffortSelected}}>More effort</option>
-                    <option value="3" {{challengingSelected}}>Challenging</option>
-                </select>
+            <div class="flex-form">
+
+                <div>
+                    <label for="nutrition.kcal">Kcal</label>
+                    <input type="number" name="nutrition.kcal" value="{{recipe.nutrition.kcal}}" />
+                </div>
+                <div>
+                    <label for="nutrition.carbs">Carbs</label>
+                    <input type="number" name="nutrition.carbs" value="{{recipe.nutrition.carbs}}" />
+                </div>
+                <div>
+                    <label for="nutrition.fiber">Fiber</label>
+                    <input type="number" name="nutrition.fiber" value="{{recipe.nutrition.fiber}}" />
+                </div>
             </div>
-            <div>
-                <label for="nutrition.kcal">Kcal</label>
-                <input type="number" name="nutrition.kcal" value="{{recipe.nutrition.kcal}}" />
-
-                <label for="nutrition.carbs">Carbs</label>
-                <input type="number" name="nutrition.carbs" value="{{recipe.nutrition.carbs}}" />
-
-                <label for="nutrition.fiber">Fiber</label>
-                <input type="number" name="nutrition.fiber" value="{{recipe.nutrition.fiber}}" />
-
-                <label for="nutrition.protein">Protein</label>
-                <input type="number" name="nutrition.protein" value="{{recipe.nutrition.protein}}" />
-
-                <label for="nutrition.sugars">Sugars</label>
-                <input type="number" name="nutrition.sugars" value="{{recipe.nutrition.sugars}}" />
-
-                <label for="nutrition.salts">Salts</label>
-                <input type="number" name="nutrition.salts" value="{{recipe.nutrition.salts}}" />
+            <div class="flex-form">
+                <div>
+                    <label for="nutrition.protein">Protein</label>
+                    <input type="number" name="nutrition.protein" value="{{recipe.nutrition.protein}}" />
+                </div>
+                <div>
+                    <label for="nutrition.sugars">Sugars</label>
+                    <input type="number" name="nutrition.sugars" value="{{recipe.nutrition.sugars}}" />
+                </div>
+                <div>
+                    <label for="nutrition.salts">Salts</label>
+                    <input type="number" name="nutrition.salts" value="{{recipe.nutrition.salts}}" />
+                </div>
             </div>
-            <div>
-                <label for="cook">Cooking Time</label>
-                <input id="cook" type="number" name="cook" value="{{recipe.cook}}" />
+            <div class="flex-form">
+                <div>
+                    <label for="cook">Cooking Time</label>
+                    <input id="cook" type="number" name="cook" value="{{recipe.cook}}" />
+                </div>
+                <div>
+                    <label for="prep">Preparation Time</label>
+                    <input id="prep" type="number" name="prep" value="{{recipe.prep}}" />
+                </div>
             </div>
             <div>
                 <label for="ingredients">Ingredients</label>
