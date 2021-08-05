@@ -93,6 +93,7 @@ th,
 td {
     border: 1px solid rgb(22, 21, 21);
     border-collapse: collapse;
+    padding: 5px;
 }
 
 table {
@@ -493,4 +494,8 @@ textarea {
 
 .centered-box.title h1.page-title {
     display: inline;
+}
+
+.ingredients {
+    line-height: 1.8;
 }
