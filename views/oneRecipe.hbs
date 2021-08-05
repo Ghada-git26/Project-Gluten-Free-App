@@ -1,10 +1,8 @@
 <div class="centered-box title">
-    <h1 class="page-title">{{recipe.name}}</h1> <a href="/update/{{recipe._id}}" class="recipe-btn">Update recipe</a>
-    <a href="/delete/{{recipe._id}}" class="recipe-btn">Delete recipe</a>
-
+    <h1 class="page-title">{{recipe.name}}</h1>
     {{#if isAdmin}}
-    <div class="UDlink">
-    </div>
+    <a href="/update/{{recipe._id}}" class="recipe-btn">Update recipe</a>
+    <a href="/delete/{{recipe._id}}" class="recipe-btn">Delete recipe</a>
     {{/if}}
 </div>
 <div class="centered-box">
