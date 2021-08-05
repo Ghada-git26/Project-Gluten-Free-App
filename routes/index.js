@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Recipe = require("../models/recipe");
+const Rating = require("../models/rating");
 const User = require("../models/User.model");
 const mongoose = require("mongoose");
 const auth = require("../middlewares/Auth");
@@ -86,23 +87,26 @@ router.post("/createRecipe", auth.requireAdmin, (req, res) => {
 });
 //Display oneRecipe
 
-router.get("/oneRecipe/:id", (req, res) => {
-    Recipe.findById(req.params.id)
-        .then(async(dbRes) => {
-            if (req.session.currentUser) {
-                var user = await User.findById(req.session.currentUser._id).populate('favoriteRecipes');
-                if (user && user.favoriteRecipes) {
-                    let recipeIds = user.favoriteRecipes.map(r => r._id);
-                    if (recipeIds.indexOf(dbRes._id) != -1) {
-                        dbRes.isUserFavourite = true;
-                    }
-                }
+router.get("/oneRecipe/:id", async(req, res) => {
+    var recipe = await Recipe.findById(req.params.id)
+        .populate({
+            path: 'ratings',
+            populate: {
+                path: 'User'
             }
-            res.render("oneRecipe.hbs", { recipe: dbRes });
-        })
-        .catch((error) => {
-            console.log(error)
         });
+
+    if (req.session.currentUser) {
+        var user = await User.findById(req.session.currentUser._id).populate('favoriteRecipes');
+        if (user && user.favoriteRecipes) {
+            let recipeIds = user.favoriteRecipes.map(r => r._id);
+            if (recipeIds.indexOf(recipe._id) != -1) {
+                recipe.isUserFavourite = true;
+            }
+        }
+    }
+
+    res.render("oneRecipe.hbs", { recipe: recipe });
 
 });
 
@@ -156,6 +160,18 @@ router.get("/profile", async(req, res) => {
         user.favoriteRecipes[i].isUserFavourite = true;
     }
     res.render("user.hbs", { user: user });
+});
+
+//Rating forms
+router.post("/addComment/:id", auth.requireAuth, async(req, res) => {
+    let rating = req.body;
+    rating.User = res.locals.currentUser;
+    var createdRating = await Rating.create(rating);
+    await Recipe.updateOne({ _id: req.params.id }, { $push: { ratings: createdRating } });
+
+
+    res.redirect(`/oneRecipe/${req.params.id}`);
+
 });
 
 module.exports = router;

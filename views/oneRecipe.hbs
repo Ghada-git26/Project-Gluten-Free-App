@@ -1,6 +1,11 @@
 <div class="centered-box">
-
     <h1 class="page-title">{{recipe.name}}</h1>
+    {{#if isAdmin}}
+    <div class="UDlink">
+        <a href="/update/{{recipe._id}}" class="recipe-btn">Update recipe</a>
+        <a href="/delete/{{recipe._id}}" class="recipe-btn">Delete recipe</a>
+    </div>
+    {{/if}}
     {{>recipePartial recipe}}
     <div class="one-recipe">
         <div class="border1">
@@ -13,10 +18,33 @@
             </ol>
         </div>
     </div>
-    {{#if isAdmin}}
-    <div class="UDlink">
-        <a href="/update/{{recipe._id}}" class="recipe-btn">Update recipe</a>
-        <a href="/delete/{{recipe._id}}" class="recipe-btn">Delete recipe</a>
+    {{#each recipe.ratings}}
+    <div class="one-recipe">
+        <div class="border1">
+            {{this.User.username}} wrote : <br>{{this.Comment}}
+            <br>
+            {{this.User.username}} gave this recipe a rating of {{this.Rating}}
+        </div>
     </div>
-    {{/if}}
+    {{/each}}
+    <div class="one-recipe">
+        <div class="border1">
+            <form method="POST" action="/addComment/{{recipe._id}}">
+                <label for="Rating">Rate</label>
+                <select name="Rating">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <label for="Comment">Comment</label>
+                <textarea name="Comment" maxlength="255" required></textarea>
+                <div class="UDlink">
+                    <button class="recipe-btn">Add comment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
 </div>

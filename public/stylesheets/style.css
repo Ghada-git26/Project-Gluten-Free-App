@@ -454,3 +454,13 @@ nav img {
     text-align: center;
     margin-top: 10px;
 }
+
+textarea {
+    display: block;
+    max-height: 150px;
+    height: 150px;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    resize: none;
+}

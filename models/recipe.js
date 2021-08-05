@@ -1,7 +1,6 @@
 // models/recipe.js
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
 const recipeSchema = new Schema({
     name: { type: String, required: true },
     category: { type: String, required: true, enum: ["Main dish", "Dessert", "Beverage"] },
@@ -21,7 +20,7 @@ const recipeSchema = new Schema({
     },
     ingredients: [String],
     image: String,
-    // rate: [{ type: Schema.Types.ObjectId, ref: "Rate" }],
+    ratings: [{ type: Schema.Types.ObjectId, ref: "rating" }],
 });
 
 const recipeModel = mongoose.model("recipe", recipeSchema);
