@@ -1,6 +1,6 @@
 <div class="centered-box title">
-    <h1 class="page-title">{{recipe.name}}</h1>         <a href="/update/{{recipe._id}}" class="recipe-btn">Update recipe</a>
-        <a href="/delete/{{recipe._id}}" class="recipe-btn">Delete recipe</a>
+    <h1 class="page-title">{{recipe.name}}</h1> <a href="/update/{{recipe._id}}" class="recipe-btn">Update recipe</a>
+    <a href="/delete/{{recipe._id}}" class="recipe-btn">Delete recipe</a>
 
     {{#if isAdmin}}
     <div class="UDlink">
@@ -9,25 +9,26 @@
 </div>
 <div class="centered-box">
     <div class="box">
-            {{>recipePartial recipe}}
-            <div class="one-recipe">
-                <div class="border1">
-                    <h1>ingredients</h1>
-                    <div class="ingredients">
+        {{>recipePartial recipe}}
+        <div class="one-recipe">
+            <div class="border1">
+                <h1>ingredients</h1>
+                <div class="ingredients">
                     <ol>
                         {{#each recipe.ingredients}}
                         <li>{{this}}</li>
 
                         {{/each}}
                     </ol>
-                    </div>
                 </div>
             </div>
+        </div>
     </div>
 </div>
 <div class="centered-box">
     <div class="box">
         <div class="one-recipe">
+            {{#if recipe.canComment}}
             <div class="border1">
                 <form method="POST" action="/addComment/{{recipe._id}}">
                     <label for="Rating">Rate</label>
@@ -45,6 +46,7 @@
                     </div>
                 </form>
             </div>
+            {{/if}}
             {{#each recipe.ratings}}
             <div class="one-recipe">
                 <div class="border1">

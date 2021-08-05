@@ -96,13 +96,20 @@ router.get("/oneRecipe/:id", async(req, res) => {
             }
         });
 
+    recipe.canComment = true;
     if (req.session.currentUser) {
-        var user = await User.findById(req.session.currentUser._id).populate('favoriteRecipes');
+        var user = await User.findById(req.session.currentUser._id)
+            .populate('favoriteRecipes');
         if (user && user.favoriteRecipes) {
             let recipeIds = user.favoriteRecipes.map(r => r._id);
             if (recipeIds.indexOf(recipe._id) != -1) {
                 recipe.isUserFavourite = true;
             }
+        }
+        let userRating = recipe.ratings
+            .filter(f => f.User._id == req.session.currentUser._id);
+        if (userRating.length > 0) {
+            recipe.canComment = false;
         }
     }
 
@@ -169,9 +176,7 @@ router.post("/addComment/:id", auth.requireAuth, async(req, res) => {
     var createdRating = await Rating.create(rating);
     await Recipe.updateOne({ _id: req.params.id }, { $push: { ratings: createdRating } });
 
-
     res.redirect(`/oneRecipe/${req.params.id}`);
-
 });
 
 module.exports = router;
