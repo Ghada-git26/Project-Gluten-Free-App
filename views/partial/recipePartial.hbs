@@ -1,6 +1,7 @@
 <div class="one-recipe">
   <section class="border1">
     <div class="header">
+      {{!-- managing the changes of isFavorite recipes button --}}
       {{#if this.isUserFavourite}}
       <a href="/recipe/unsetFavourite/{{this._id}}" class="favorite-btn favorite">&hearts;</a>
       {{else}}

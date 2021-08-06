@@ -5,7 +5,8 @@ const Rating = require("../models/rating");
 const User = require("../models/User.model");
 const mongoose = require("mongoose");
 const auth = require("../middlewares/Auth");
-//Get home-page
+
+//Get home-page (displaying home page)
 router.get("/", (req, res) => {
     res.render("index.hbs");
 });
@@ -13,10 +14,14 @@ router.get("/", (req, res) => {
 
 /* GET recipe page. */
 router.get('/recipe', async function(req, res, next) {
+    //displaying 3 different category of dishes
+    //filtering by category
     var mainDishes = await Recipe.find({ category: 'Main dish' });
     var desserts = await Recipe.find({ category: 'Dessert' });
     var beverages = await Recipe.find({ category: 'Beverage' });
+    //Setting conditions for selecting favorite recipes
     if (req.session.currentUser) {
+        //Use of populate de display ech user's favorite recipe
         var user = await User.findById(req.session.currentUser._id).populate('favoriteRecipes');
         if (user && user.favoriteRecipes) {
             await setFavorites(user, mainDishes);
@@ -24,6 +29,7 @@ router.get('/recipe', async function(req, res, next) {
             await setFavorites(user, beverages);
         }
     }
+    //displaying 3 different category of dishes
     res.render("recipe.hbs", {
         mainDishes: mainDishes,
         desserts: desserts,
@@ -31,7 +37,9 @@ router.get('/recipe', async function(req, res, next) {
     });
 });
 
+//function to check if a recipe is a favorite of a user
 async function setFavorites(user, recipes) {
+    //gettig the id's of a user's favorite recipe
     let recipeIds = user.favoriteRecipes.map(r => r._id);
     for (let i = 0; i < recipes.length; i++) {
         if (recipeIds.indexOf(recipes[i]._id) != -1) {
@@ -40,6 +48,7 @@ async function setFavorites(user, recipes) {
     }
 }
 
+//make the recipe with the given id a user favourite
 router.get('/recipe/setFavourite/:id', auth.requireAuth, async(req, res) => {
     var user = await User.findById(req.session.currentUser._id).populate('favoriteRecipes');
     var recipe = await Recipe.findById(req.params.id);
@@ -49,6 +58,7 @@ router.get('/recipe/setFavourite/:id', auth.requireAuth, async(req, res) => {
     res.redirect('back');
 });
 
+//delete the recipe with the given id from user favourites
 router.get('/recipe/unsetFavourite/:id', auth.requireAuth, async(req, res) => {
     var user = await User.findById(req.session.currentUser._id).populate('favoriteRecipes');
     var recipe = await Recipe.findById(req.params.id);
@@ -88,6 +98,7 @@ router.post("/createRecipe", auth.requireAdmin, (req, res) => {
 //Display oneRecipe
 
 router.get("/oneRecipe/:id", async(req, res) => {
+    //rating onerecipe
     var recipe = await Recipe.findById(req.params.id)
         .populate({
             path: 'ratings',
@@ -95,8 +106,9 @@ router.get("/oneRecipe/:id", async(req, res) => {
                 path: 'User'
             }
         });
-
+    //setting a variable to check if a user can comment
     recipe.canComment = true;
+    //the same code for selecting favorite recipes even fropm the onerecipe page
     if (req.session.currentUser) {
         var user = await User.findById(req.session.currentUser._id)
             .populate('favoriteRecipes');
@@ -106,6 +118,7 @@ router.get("/oneRecipe/:id", async(req, res) => {
                 recipe.isUserFavourite = true;
             }
         }
+        //Rating
         let userRating = recipe.ratings
             .filter(f => f.User._id == req.session.currentUser._id);
         if (userRating.length > 0) {
